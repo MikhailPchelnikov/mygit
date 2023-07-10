@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	fmt.Println("hello1")
+	var message = "I Love Golang"
+	fmt.Scanln(&message)
+	// split string from space " "
+	splittedString := strings.Split(message, " ")
+
+	fmt.Println(splittedString)
 }
