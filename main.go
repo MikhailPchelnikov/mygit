@@ -19,9 +19,13 @@ func main() {
 
 			fmt.Println(str1, str2, str3)
 
-			str1 = ""
-			str2 = ""
-			str3 = ""
-		}
-	}
-}
+		} else {
+			fmt.Println("вводите задания в формате: \" два операнда и один оператор между ними (через пробел)\"")
+			break
+		} //if
+
+		str1 = ""
+		str2 = ""
+		str3 = ""
+	} //for
+} //main
