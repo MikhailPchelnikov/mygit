@@ -121,6 +121,8 @@ func main() {
 	var str1, str2, str3, str4, errorString string
 	var op1, op2, res int
 
+	//проверяем не ввел ли пользователь четыре слова или более, заготовим строку, которую случайно никто не введет
+	//а ее значение меняется на значение четвертого слова, вводимого пользователем
 	str4 = "cheatcode543210string" //uniq string life user without special knowledge never enters
 	errorString = BasicErrorMsg
 
