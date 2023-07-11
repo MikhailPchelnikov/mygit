@@ -204,5 +204,5 @@ func main() {
 		str2 = ""
 		str3 = ""
 	} //for
-	fmt.Println(errorString) //error result prints, then exits programm
+	fmt.Println(errorString) //error result prints, then exits program
 } //main
