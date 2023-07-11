@@ -3,6 +3,7 @@ package main
 import (
 	//"bufio"
 	"fmt"
+	"strings"
 	//"os"
 	//"strconv"
 	//"strings"
@@ -77,6 +78,7 @@ func checkOperandsRome(testStrKey string) bool {
 const BasicErrorMsg = "Ваша строка не соотвествует формату: \" два операнда и один оператор между ними (через пробелы) \""
 
 func main() {
+
 	RomeMap := make(map[string]int)
 
 	RomeMap["I"] = 1
@@ -92,8 +94,11 @@ func main() {
 
 	//reader := bufio.NewReader(os.Stdin)s
 	var str1, str2, str3, str4, errorString string
+	//var op1, op2 int
+
 	str4 = "cheatcode543210string" //uniq string life user without special knowledge never enters
 	errorString = BasicErrorMsg
+
 	for {
 
 		fmt.Println("Будет выведен результат, если введете \" два операнда и один оператор между ними (через пробелы) \"")
@@ -101,7 +106,7 @@ func main() {
 		//text, _ := reader.ReadString('\n')
 		fmt.Scanln(&str1, &str2, &str3, &str4)
 		if str3 == "" {
-			errorString = ("Учтите, Вы ввели слишком мало. " + BasicErrorMsg)
+			errorString = ("Учтите, Вы ввели слишком мало. или забыли про пробелы " + BasicErrorMsg)
 			break
 		}
 
@@ -111,25 +116,33 @@ func main() {
 		}
 
 		if !checkOpS(str2) {
-			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . Или ввели его не так, как надо. " + BasicErrorMsg)
+			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . между операндами. И может еще что-то не так ввели " + BasicErrorMsg)
+			break
+		}
+
+		str1 = strings.ToUpper(str1)
+		str3 = strings.ToUpper(str3)
+
+		if !(checkOperandsArab(str1) || checkOperandsRome(str1)) {
+			errorString = ("Ваш как минимум первый операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение не работать НЕ будет! " + BasicErrorMsg)
+			break
+		}
+
+		if !(checkOperandsArab(str3) || checkOperandsRome(str3)) {
+			errorString = ("Ваш второй операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение не работать НЕ будет! " + BasicErrorMsg)
 			break
 		}
 
 		if (checkOperandsRome(str1) && checkOperandsArab(str3)) || (checkOperandsRome(str3) && checkOperandsArab(str1)) {
-			errorString = ("Учтите, У вас разносортица в операндах. Вводите только римские или только арабские цифры. " + BasicErrorMsg)
+			errorString = ("Учтите, У вас разносортица в операндах. Вводите только римские или только арабские цифры. ") //+ BasicErrorMsg)
 			break
 		}
 
-		if true {
-			fmt.Println("is " + str1 + " Arabic number 1 to 10 ?")
-			fmt.Println(checkOperandsArab(str1))
-			fmt.Println("is " + str1 + " Rome number I to X ?")
-			fmt.Println(checkOperandsRome(str1))
+		if checkOperandsRome(str1)
 
-			fmt.Println("is " + str3 + " Arabic number 1 to 10 ?")
-			fmt.Println(checkOperandsRome(str3))
-			fmt.Println("is " + str3 + " Rome number I to X ?")
-			fmt.Println(checkOperandsRome(str3))
+
+		if true {
+			fmt.Println("погнали!")
 
 		} else {
 			//fmt.Println(errorstr)
