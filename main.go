@@ -75,6 +75,34 @@ func checkOperandsRome(testStrKey string) bool {
 	}
 }
 
+func intToRome100(i int) string {
+
+	conversions := []struct {
+		value int
+		digit string
+	}{
+		{100, "C"},
+		{90, "XC"},
+		{50, "L"},
+		{40, "XL"},
+		{10, "X"},
+		{9, "IX"},
+		{5, "V"},
+		{4, "IV"},
+		{1, "I"},
+	}
+
+	var roman string
+	for _, conversion := range conversions {
+		for i >= conversion.value {
+			roman = roman + conversion.digit
+			i -= conversion.value
+		}
+	}
+
+	return roman
+}
+
 const BasicErrorMsg = "Ваша строка не соотвествует формату: \" два операнда и один оператор между ними (через пробелы) \""
 
 func main() {
@@ -94,7 +122,7 @@ func main() {
 
 	//reader := bufio.NewReader(os.Stdin)s
 	var str1, str2, str3, str4, errorString string
-	//var op1, op2 int
+	var op1, op2, res int
 
 	str4 = "cheatcode543210string" //uniq string life user without special knowledge never enters
 	errorString = BasicErrorMsg
@@ -116,7 +144,7 @@ func main() {
 		}
 
 		if !checkOpS(str2) {
-			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . между операндами. И может еще что-то не так ввели " + BasicErrorMsg)
+			errorString = ("Учтите, Вы НЕ ввели арифметический знак из ряда + - * / . между операндами. И может еще что-то не так ввели " + BasicErrorMsg)
 			break
 		}
 
@@ -134,15 +162,27 @@ func main() {
 		}
 
 		if (checkOperandsRome(str1) && checkOperandsArab(str3)) || (checkOperandsRome(str3) && checkOperandsArab(str1)) {
-			errorString = ("Учтите, У вас разносортица в операндах. Вводите только римские или только арабские цифры. ") //+ BasicErrorMsg)
+			errorString = ("Учтите, У Вас разносортица в операндах. Вводите только римские или только арабские цифры. ") //+ BasicErrorMsg)
 			break
 		}
-
-		if checkOperandsRome(str1)
-
+		/*rome routines*/
+		if checkOperandsRome(str1) {
+			op1 = RomeMap[str1]
+			op2 = RomeMap[str3]
+			switch str2 {
+			case "+":
+				res = op1 + op2
+			case "*":
+				res = op1 + op2
+			case "/":
+				res = op1 / op2
+			case "-":
+				res = op1 - op2
+			}
+		}
 
 		if true {
-			fmt.Println("погнали!")
+			fmt.Println(res)
 
 		} else {
 			//fmt.Println(errorstr)
