@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"strings"
 	//"os"
-	//"strconv"
-	//"strings"
+	"strconv"
 )
 
 func checkOpS(testStrKey string) bool {
@@ -132,7 +131,9 @@ func main() {
 		fmt.Println("Будет выведен результат, если введете \" два операнда и один оператор между ними (через пробелы) \"")
 		//fmt.Print("Enter text: ")
 		//text, _ := reader.ReadString('\n')
+
 		fmt.Scanln(&str1, &str2, &str3, &str4)
+
 		if str3 == "" {
 			errorString = ("Учтите, Вы ввели слишком мало. или забыли про пробелы " + BasicErrorMsg)
 			break
@@ -173,21 +174,32 @@ func main() {
 			case "+":
 				res = op1 + op2
 			case "*":
-				res = op1 + op2
+				res = op1 * op2
 			case "/":
 				res = op1 / op2
 			case "-":
 				res = op1 - op2
 			}
-		}
-
-		if true {
+			if res < 0 {
+				errorString = ("Извините, когда работаете с римскими цифрами, подгадвайте операции так, чтобы результат был больше 0, чтобы получать отрицательные значения задавайте вычисление арабскими цифрами") //+ BasicErrorMsg)
+				break
+			}
+			fmt.Println(intToRome100(res))
+		} else { //arab tests already done
+			op1 = strconv.Atoi[str1]
+			op2 = strconv.Atoi[str3]
+			switch str2 {
+			case "+":
+				res = op1 + op2
+			case "*":
+				res = op1 * op2
+			case "/":
+				res = op1 / op2
+			case "-":
+				res = op1 - op2
+			}
 			fmt.Println(res)
-
-		} else {
-			//fmt.Println(errorstr)
-			break
-		} //if
+		}
 
 		str1 = ""
 		str2 = ""
