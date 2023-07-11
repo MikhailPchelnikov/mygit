@@ -32,7 +32,7 @@ func checkOperandsArab(testStrKey string) bool {
 	var voidEl void    //	sets helpers
 	ArabSet := make(map[string]void)
 
-	ArabSet["0"] = voidEl
+	//ArabSet["0"] = voidEl
 	ArabSet["1"] = voidEl
 	ArabSet["2"] = voidEl
 	ArabSet["3"] = voidEl
@@ -102,19 +102,34 @@ func main() {
 		fmt.Scanln(&str1, &str2, &str3, &str4)
 		if str3 == "" {
 			errorString = ("Учтите, Вы ввели слишком мало. " + BasicErrorMsg)
+			break
 		}
 
 		if str4 != "cheatcode543210string" {
 			errorString = ("Учтите, Вы ввели слишком много. " + BasicErrorMsg)
+			break
 		}
 
 		if !checkOpS(str2) {
-			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . " + BasicErrorMsg)
+			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . Или ввели его не так, как надо. " + BasicErrorMsg)
+			break
 		}
 
-		if str1 != "" && str2 != "" && str3 != "" && checkOpS(str2) {
+		if (checkOperandsRome(str1) && checkOperandsArab(str3)) || (checkOperandsRome(str3) && checkOperandsArab(str1)) {
+			errorString = ("Учтите, У вас разносортица в операндах. Вводите только римские или только арабские цифры. " + BasicErrorMsg)
+			break
+		}
 
-			fmt.Println(str1, str2, str3)
+		if true {
+			fmt.Println("is " + str1 + " Arabic number 1 to 10 ?")
+			fmt.Println(checkOperandsArab(str1))
+			fmt.Println("is " + str1 + " Rome number I to X ?")
+			fmt.Println(checkOperandsRome(str1))
+
+			fmt.Println("is " + str3 + " Arabic number 1 to 10 ?")
+			fmt.Println(checkOperandsRome(str3))
+			fmt.Println("is " + str3 + " Rome number I to X ?")
+			fmt.Println(checkOperandsRome(str3))
 
 		} else {
 			//fmt.Println(errorstr)
