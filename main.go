@@ -186,8 +186,8 @@ func main() {
 			}
 			fmt.Println(intToRome100(res))
 		} else { //arab tests already done
-			op1 = strconv.Atoi[str1]
-			op2 = strconv.Atoi[str3]
+			op1, _ = strconv.Atoi(str1)
+			op2, _ = strconv.Atoi(str3)
 			switch str2 {
 			case "+":
 				res = op1 + op2
