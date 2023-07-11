@@ -196,7 +196,7 @@ func main() {
 				res = op1 - op2
 			}
 			fmt.Println(res) //arab result
-		} //arabs
+		} //arab routines
 
 		str1 = ""
 		str2 = ""
