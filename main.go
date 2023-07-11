@@ -100,8 +100,16 @@ func main() {
 		//fmt.Print("Enter text: ")
 		//text, _ := reader.ReadString('\n')
 		fmt.Scanln(&str1, &str2, &str3, &str4)
+		if str3 == "" {
+			errorString = ("Учтите, Вы ввели слишком мало. " + BasicErrorMsg)
+		}
+
 		if str4 != "cheatcode543210string" {
 			errorString = ("Учтите, Вы ввели слишком много. " + BasicErrorMsg)
+		}
+
+		if !checkOpS(str2) {
+			errorString = ("Учтите, Вы не ввели арифметический знак из ряда + - * / . " + BasicErrorMsg)
 		}
 
 		if str1 != "" && str2 != "" && str3 != "" && checkOpS(str2) {
