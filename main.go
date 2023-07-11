@@ -129,9 +129,6 @@ func main() {
 	for {
 
 		fmt.Println("Будет выведен результат, если введете \" два операнда и один оператор между ними (через пробелы) \"")
-		//fmt.Print("Enter text: ")
-		//text, _ := reader.ReadString('\n')
-
 		fmt.Scanln(&str1, &str2, &str3, &str4)
 
 		if str3 == "" {
@@ -184,7 +181,9 @@ func main() {
 				errorString = ("Извините, когда работаете с римскими цифрами, подгадвайте операции так, чтобы результат был больше 0, чтобы получать отрицательные значения задавайте вычисление арабскими цифрами") //+ BasicErrorMsg)
 				break
 			}
-			fmt.Println(intToRome100(res))
+
+			fmt.Println(intToRome100(res)) //rome result
+
 		} else { //arab tests already done
 			op1, _ := strconv.Atoi(str1)
 			op2, _ := strconv.Atoi(str3)
@@ -198,13 +197,12 @@ func main() {
 			case "-":
 				res = op1 - op2
 			}
-			fmt.Println(res)
-		}
+			fmt.Println(res) //arab result
+		} //arabs
 
 		str1 = ""
 		str2 = ""
 		str3 = ""
-		//str4 = "cheatcode543210string" //uniq string life user without special knowledge never enters
 	} //for
-	fmt.Println(errorString)
+	fmt.Println(errorString) //error result prints, then exits programm
 } //main
