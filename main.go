@@ -153,12 +153,12 @@ func main() {
 		str3 = strings.ToUpper(str3)
 
 		if !(checkOperandsArab(str1) || checkOperandsRome(str1)) {
-			errorString = ("Ваш как минимум первый операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение не работать НЕ будет! " + BasicErrorMsg)
+			errorString = ("Ваш как минимум первый операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение работать НЕ будет! " + BasicErrorMsg)
 			break
 		}
 
 		if !(checkOperandsArab(str3) || checkOperandsRome(str3)) {
-			errorString = ("Ваш второй операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение не работать НЕ будет! " + BasicErrorMsg)
+			errorString = ("Ваш второй операнд не вписывается в рабочий диапазон, вводите от 1 до 10 арабскими или римским (от I до X ). С нулем, отрицательными, 11 и более значениями приложение работать НЕ будет! " + BasicErrorMsg)
 			break
 		}
 
@@ -186,8 +186,8 @@ func main() {
 			}
 			fmt.Println(intToRome100(res))
 		} else { //arab tests already done
-			op1, _ = strconv.Atoi(str1)
-			op2, _ = strconv.Atoi(str3)
+			op1, _ := strconv.Atoi(str1)
+			op2, _ := strconv.Atoi(str3)
 			switch str2 {
 			case "+":
 				res = op1 + op2
