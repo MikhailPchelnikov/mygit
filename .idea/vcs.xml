@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/concalcNoNeedSpaces" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/concalcSpacesAssumed" vcs="Git" />
   </component>
 </project>
